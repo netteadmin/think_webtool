@@ -2,7 +2,7 @@
     "name": "netteadmin/think_webtool",
     "autoload": {
         "psr-4": {
-            "app\\webtool\\": "src"
+            "app\\webtool\\": "webtool"
         }
     }
 }
