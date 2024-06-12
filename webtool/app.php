@@ -113,7 +113,10 @@ add_action("admin.index",function(){
     if(!is_admin_login()){
         return;
     }
-    include __DIR__.'/action/home.php';
+    global $config;
+    if($config['show_webtool']){
+        include __DIR__.'/action/home.php';
+    } 
 });
 add_action("admin.index.created",function(&$created){
     if(!is_admin_login()){
