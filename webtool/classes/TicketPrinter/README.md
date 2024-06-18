@@ -1,0 +1,94 @@
+# 调用58mm打印
+
+~~~
+$url = get_config("RPC_WEBTOOL_URL").'/rpc/webtool/TicketPrinterFeiE';    
+$client = rpc($url);
+$data = [
+  [
+    "title"=>'标题',
+    'tag'=>'cb|br', 
+  ],
+  [
+    "title"=>'123465',
+    'tag'=>'code_int|br', 
+  ],
+  [
+    'tag'=>'line|br'
+  ],
+  [
+     'top'=>[
+        'title'=>'名称|*',
+        'price'=>'单价|2',
+        'num'=>'数量|1', 
+     ],
+     'list'=>[
+        [
+            'title'=>'酸菜鱼',
+            'price'=>'100.4',
+            'num'=>'10',
+        ],
+        [
+            'title'=>'可乐鸡翅+蒜蓉蒸扇贝',
+            'price'=>'10.3',
+            'num'=>'6',
+        ],
+        [
+            'title'=>'紫苏焖鹅+梅菜肉饼+椒盐虾+北京烤鸭',
+            'price'=>'10.0',
+            'num'=>'8',
+        ],
+     ]
+  ], 
+];
+$client->print_58([
+	'user'=>'',
+	'ukey'=>'',
+	'sn'=>'',
+],[
+    'list'=>$s,
+    'times'=>1,
+]);
+~~~
+
+标签解析
+~~~
+$data = [
+  [
+    "title"=>'30,20',
+    'tag'=>"t_size", 
+  ],
+  [
+    'title'=>get_text_lr(['#001','5号桌','1/2'],26-9),
+    'tag'=>'t_text',
+    'attr'=>[
+        'x'=>9,
+        'y'=>10,
+        'font'=>12,
+    ]
+  ], 
+  [
+    'title'=>get_text_c("剁椒鱼头",26),
+    'tag'=>'t_text',
+    'attr'=>[
+        'x'=>0,
+        'y'=>80,
+        'font'=>12,
+    ]
+  ], 
+  [
+    'title'=>get_text_lr(['昵称','13285801489'],26-9),
+    'tag'=>'t_text',
+    'attr'=>[
+        'x'=>0,
+        'y'=>180,
+        'font'=>12,
+    ]
+  ], 
+  /*[ 
+    'tag'=>"t_logo", 
+    'attr'=>[
+        'x'=>180,
+    ]
+  ],*/
+]; 
+~~~
