@@ -1,21 +1,21 @@
 <?php global $vue;admin_header();?>
  
 <div> 
-  <h1>接口请求日志</h1>
+  <h1><?=lang('接口请求日志')?></h1>
   <div class="pure-form ">
-    <input v-model="where.wq" @keyup.enter="get_lists_search" @input="get_lists_search" placeholder="请输入名称回车搜索">
+    <input v-model="where.wq" @keyup.enter="get_lists_search" @input="get_lists_search" placeholder="<?=lang('请输入名称回车搜索')?>">
     <input type="date" v-model="where.time" @change="get_lists_search">
-    <button class=" pure-button" @click="reset_page()">重置</button>
+    <button class=" pure-button" @click="reset_page()"><?=lang('重置')?></button>
   </div>
   <table class="pure-table pure-table-bordered" style="width:100%;">
       <thead>
           <tr>
-              <th style="width:50px;">序号</th>
-              <th>名称</th>  
-              <th style="width:100px;"> 参数</th>  
-              <th style="width:100px;">返回</th>   
-              <th style="width:180px;">请求时间</th>    
-              <th style="width:180px;" >完成时间</th>    
+              <th style="width:50px;"><?=lang('序号')?></th>
+              <th><?=lang('名称')?></th>  
+              <th style="width:100px;"> <?=lang('参数')?></th>  
+              <th style="width:100px;"><?=lang('返回')?></th>   
+              <th style="width:180px;"><?=lang('请求时间')?></th>    
+              <th style="width:180px;" ><?=lang('完成时间')?></th>    
           </tr>
       </thead>
       <tbody>
@@ -24,10 +24,10 @@
               <td>{{v.index}}</td>
               <td>{{v.title}}</td> 
               <td>
-                <a href="javascript:void(0);" @click="view_json(v.par)">查看参数</a>
+                <a href="javascript:void(0);" @click="view_json(v.par)"><?=lang('查看参数')?></a>
               </td> 
               <td>
-                <a href="javascript:void(0);" @click="view_json(v.api_return)">查看返回数据</a>
+                <a href="javascript:void(0);" @click="view_json(v.api_return)"><?=lang('查看返回数据')?></a>
               </td> 
  
               <td>{{v.created_at}}</td>    
@@ -48,7 +48,7 @@
         :total="total">
       </el-pagination>
   </div>
-<div id="dialog" title="查看数据" style="display: none;" >
+<div id="dialog" title="<?=lang('查看数据')?>" style="display: none;" >
   <div style="width:100%;height: 80vh;">
     <pre id="json-renderer"  ></pre>
   </div>
