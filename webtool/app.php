@@ -122,7 +122,9 @@ add_action("admin.index.created",function(&$created){
     if(!is_admin_login()){
         return;
     } 
-    $created[] = 'get_webtoll()';
+    if($config['show_webtool']){
+        $created[] = 'get_webtoll()';
+    }
 }); 
 
 include __DIR__.'/printer.php';
