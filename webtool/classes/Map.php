@@ -7,6 +7,14 @@ namespace app\webtool\classes;
 use lib\Map as Service;
 
 class Map{  
+    //使用天地图 tiantitu 或 腾讯地图 tx
+    public static $use = 'tiantitu';
+    /**
+    * 获取坐标点,使用天地图
+    */
+    public function get_lat($address){
+        return \helper_v3\Map::get_lat($address);
+    }
     /**
     * 获取坐标点
     */
@@ -35,8 +43,11 @@ class Map{
         if(!$key){
             return error_data('请求失败');
         }
-
-        $d = $this->get_tx_address_lat_lng($address)['data'];
+        if(self::$use == 'tx'){
+            $d = $this->get_tx_address_lat_lng($address)['data'];
+        }else if(self::$use == 'tiantitu'){
+            $d = $this->get_lat($address);
+        }  
         $lat = $d['lat'];
         $lng = $d['lng'];
 
